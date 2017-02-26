@@ -1,4 +1,4 @@
-###PT100RTD
+#PT100RTD
 
 Arduino Library for Pt100 RTD ohms-to-Celsius conversion
 
