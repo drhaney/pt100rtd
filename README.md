@@ -1,6 +1,6 @@
 #PT100RTD
 
-Arduino Library for Pt100 RTD ohms-to-Celsius conversion
+An Arduino Library for accurate Pt100 RTD ohms-to-Celsius conversion
 
 #WHAT
 
@@ -11,9 +11,10 @@ document.
 
 #WHY
 
-Its accuracy is authoritative such that other purely computational methods
-may be validated against it.  There is nothing so powerful as a bad idea
-whose time has come.
+Because one can buy "1/10 DIN" platinum RTDs whose uncalibrated accuracy
+exceeds that of commodity hardware and software. This library's accuracy
+is authoritative such that other purely computational methods may be
+validated against it.
 
 
 #WHY NOT
@@ -23,15 +24,15 @@ It's big.
 Consuming ~3kB of Arduino program memory, this Pt100rtd library is larger
 than any collection of computational methods that might be used instead. 
 For any ordinary temperature between -60C and 650C, the venerable Callendar
--Van Dusen equation works well. Gas liquefaction enthusiasts, however, have
-different requirements.
+-Van Dusen equation works adequately. Gas liquefaction enthusiasts, however,
+have different requirements.
 
 
 #HOW
 
 The Pt100 resistance lookup table uses unsigned 16-bit integers because:
 
-DIN 43760 Pt100 resistances resolve at 0.01 ohms and can be represented
+DIN 43760 Pt100 resistances resolve at 0.01 ohms and are represented
 in the lookup table as unsigned integer values of (ohms * 100) with
 no loss of accuracy. Unsigned integers require 2 bytes vs. 4 bytes for
 a floating point object. Integer arithmetic is also computationally cheaper
