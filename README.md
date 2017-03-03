@@ -6,26 +6,36 @@ An Arduino Library for accurate Pt100 RTD ohms-to-Celsius conversion
 
 It converts a Pt100 temperature sensor resistance into degrees Celsius 
 using a lookup table taken from empirical data in the DIN 43760 / IEC 751 
-document.
+document. This library's conversion accuracy is authoritative such that
+other purely computational methods may be validated against it.
 
 
 #WHY
 
-Because one can buy "1/10 DIN" platinum RTDs whose uncalibrated accuracy
-exceeds that of commodity hardware and software. This library's accuracy
-is authoritative such that other purely computational methods may be
-validated against it.
+Pt100 sensors can have uncalibrated accuracy which often exceeds that of the measurement
+hardware and firmware. Now that these sensors are affordably manufactured at "1/10 DIN"
+accuracy for the 0-100C range, the firmware should match them at least minimally. 
 
 
 #WHY NOT
 
-It's big.
+1.) It's big.
 
 Consuming ~3kB of Arduino program memory, this Pt100rtd library is larger
 than any collection of computational methods that might be used instead. 
 For any ordinary temperature between -60C and 650C, the venerable Callendar
 -Van Dusen equation works adequately. Gas liquefaction enthusiasts, however,
 have different requirements.
+
+2.) The measurement hardware is inadequate or middling.
+
+If the hardware interface has insufficient resolution, an inaccurate reference
+resistance (0.05% is only a start) or too high an excitation current through
+the RTD, precise conversion can't correct inaccurate data acquisition.
+
+A high excitation current causes RTD self-heating which militates against accurate
+measurement. Self-heating can be corrected for only if the measurement conditions
+are known beforehand . . . which they generally aren't.
 
 
 #HOW
