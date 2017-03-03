@@ -114,12 +114,13 @@ void loop()
 	Tcube	= PT100.celsius_cubic(ohms) ;		  // Cubic eqn calc
 	Tpoly	= PT100.celsius_polynomial(ohms) ;      // 5th order polynomial
 	Trpoly= PT100.celsius_rationalpolynomial(ohms) ;	// ugly rational polynomial quotient
-
-	Serial.print("Tlut   = ") ; Serial.print(Tlut  ,2) ; Serial.println(" C (exact)") ;
-	Serial.print("Tcvd   = ") ; Serial.print(Tcvd  ,2) ; Serial.println(" C") ;
-	Serial.print("Tcube  = ") ; Serial.print(Tcube ,2) ; Serial.println(" C") ;
-	Serial.print("Tpoly  = ") ; Serial.print(Tpoly ,2) ; Serial.println(" C") ;
-	Serial.print("Trpoly = ") ; Serial.print(Trpoly,2) ; Serial.println(" C") ;
+	
+	// report temperatures at 0.001C resolution to highlight methodological differences
+	Serial.print("Tlut   = ") ; Serial.print(Tlut  ,3) ; Serial.println(" C (exact)") ;
+	Serial.print("Tcvd   = ") ; Serial.print(Tcvd  ,3) ; Serial.println(" C") ;
+	Serial.print("Tcube  = ") ; Serial.print(Tcube ,3) ; Serial.println(" C") ;
+	Serial.print("Tpoly  = ") ; Serial.print(Tpoly ,3) ; Serial.println(" C") ;
+	Serial.print("Trpoly = ") ; Serial.print(Trpoly,3) ; Serial.println(" C") ;
   Serial.println();
   
 	checkFault() ;
