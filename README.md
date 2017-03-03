@@ -66,7 +66,7 @@ If ported to a CPU with more SRAM and a floating point unit, (viz., ARM
 Cortex M4 or better) these defs will certainly help: 
 
 	#define PROGMEM /**/
-	#define pgm_read_word_near((x)) (x)
+	#define pgm_read_word_near((x)) ((uint16_t)(*(x)))
 
 It has been tested and and found suitable for the Adafruit Pt100 RTD
 Breakout w/MAX31865 although any Arduino hardware+software mix that
