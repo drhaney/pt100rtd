@@ -268,7 +268,7 @@ float pt100rtd::celsius_cubic(float R_ohms)
 // R2T polynomial from Analog Devices AN709 app note.
 // implementation ganked from Adafruit MAX31865 library.
 // Use for accurate temperatures -60C and below.
-// Warning! Exceeds Class B accuracy spec above +164C
+// Warning! Exceeds Class B tolerance spec above +164C
 
 float pt100rtd::celsius_polynomial (float R_ohms)
 {
