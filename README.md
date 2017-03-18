@@ -1,8 +1,8 @@
-#PT100RTD
+PT100RTD
 
 An Arduino Library for accurate Pt100 RTD ohms-to-Celsius conversion
 
-#WHAT
+WHAT
 
 It converts a Pt100 temperature sensor resistance into degrees Celsius 
 using a lookup table taken from empirical data in the DIN 43760 / IEC 751 
@@ -10,14 +10,14 @@ document. This library's conversion accuracy is authoritative such that
 other purely computational methods may be validated against it.
 
 
-#WHY
+WHY
 
 Pt100 sensors can have uncalibrated accuracy which often exceeds that of the measurement
 hardware and firmware. Now that these sensors are affordably manufactured at "1/10 DIN"
 accuracy for the 0-100C range, the firmware should match them at least minimally. 
 
 
-#WHY NOT
+WHY NOT
 
 1.) It's big.
 
