@@ -1,17 +1,17 @@
 /*******************************************************************
-	PT100RTD
+    PT100RTD
 	 
-	This library uses integer math to convert a Pt100 RTD resistance to a
-	celsius temperature of two decimal point precision.
+    This library uses integer math to convert a Pt100 RTD resistance to a
+    celsius temperature of two decimal point precision.
  
-	It searches an ordered list of empirical resistances which correspond to
-	temperatures ranging -200C to +850C, the complete span for which 100 ohm
-	platinum RTDs are specified.  It interpolates temperatures from intermediate
-	resistances.
+    It searches an ordered list of empirical resistances which correspond to
+    temperatures ranging -200C to +850C, the complete span for which 100 ohm
+    platinum RTDs are specified.  It interpolates temperatures from intermediate
+    resistances.
  
-	AUTHOR:	drh
+    AUTHOR:	drh
 
-	DATE:2/18/2017
+    DATE:2/18/2017
 
 *******************************************************************/
 
@@ -36,12 +36,12 @@
 #define CELSIUS_MAX 850
 
 /*******************************************************************
-*	 pt100rtd list of resistances v temperature
+*    pt100rtd list of resistances v temperature
 *
-*   DIN 43760 resistance values (ohms) were multiplied by 100 and
-*	converted to 16 bit unsigned integers with no loss of accuracy.
+*    DIN 43760 resistance values (ohms) were multiplied by 100 and
+*    converted to 16 bit unsigned integers with no loss of accuracy.
 * 
-*	Examples:
+*    Examples:
 *	1852 represents 18.52 ohms and corresponds to a temperature of -200C.
 *	10000 ==> 100.00 ohms @   0C
 *	13851 ==> 138.51 ohms @ 100C 
@@ -163,23 +163,21 @@ const int PT100_TABLE_MAXIDX = ((sizeof(Pt100_table) / sizeof(uint16_t)) - 1) ;
 class pt100rtd
 {
 private:
-	int search_pt100_list(uint16_t key) ;
-	float ohmsX100_to_celsius(uint16_t ohmsX100) ;
+    int search_pt100_list(uint16_t key) ;
+    float ohmsX100_to_celsius(uint16_t ohmsX100) ;
 
 public:
-	pt100rtd() ;
+    pt100rtd() ;
 
-	float celsius (uint16_t ohmsX100) ;
-	float celsius(float Rrtd) ;
-	
+    float celsius (uint16_t ohmsX100) ;
+    float celsius(float Rrtd) ;
 
-	float celsius_to_Pt100ohms (float celsius) ;
-	
-	float celsius_cvd(float R_ohms) ;
-	float celsius_cubic(float R_ohms) ;
-	float celsius_polynomial (float R_ohms) ;
-	float celsius_rationalpolynomial (float R_ohms) ;
+    float celsius_to_Pt100ohms (float celsius) ;
 
+    float celsius_cvd(float R_ohms) ;
+    float celsius_cubic(float R_ohms) ;
+    float celsius_polynomial (float R_ohms) ;
+    float celsius_rationalpolynomial (float R_ohms) ;
 } ;
 
 #endif  // PT100RTD_H
