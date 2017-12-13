@@ -78,4 +78,4 @@ produces a conformant Pt100 RTD output in ohms may use the library.
 
 Written by drhaney for his own selfish purposes under BSD 
 license.  All text above must be included in any redistribution.
-2/24/2017
+12/14/2017
