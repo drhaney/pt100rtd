@@ -1,8 +1,8 @@
-#PT100RTD
+# PT100RTD
 
-####An Arduino Library for accurate Pt100 RTD ohms-to-Celsius conversion
+#### An Arduino Library for accurate Pt100 RTD ohms-to-Celsius conversion
 
-##WHAT
+## WHAT
 
 It converts a Pt100 temperature sensor resistance into degrees Celsius 
 using a lookup table taken from empirical data in the DIN 43760 / IEC 751 
@@ -10,16 +10,16 @@ document. This library's conversion accuracy is authoritative such that
 other purely computational methods may be validated against it.
 
 
-##WHY
+## WHY
 
 Pt100 sensors can have uncalibrated accuracy which often exceeds that of the measurement
 hardware and firmware. Now that these sensors are affordably manufactured at "1/10 DIN"
 accuracy for the 0-100C range, the firmware should match them at least minimally. 
 
 
-##WHY NOT
+## WHY NOT
 
-####It's big.
+#### It's big.
 
 Consuming ~3kB of Arduino program memory, this Pt100rtd library is larger
 than any collection of computational methods that might be used instead. 
@@ -27,7 +27,7 @@ For any ordinary temperature between -60C and 650C, the venerable Callendar
 -Van Dusen equation works adequately. Gas liquefaction enthusiasts, however,
 have different requirements.
 
-####The measurement hardware is inadequate or middling.
+#### The measurement hardware is inadequate or middling.
 
 If the hardware interface has insufficient resolution, an inaccurate reference
 resistance (0.05% is only a start) or too high an excitation current through
@@ -38,7 +38,7 @@ measurement. Self-heating can be corrected for only if the measurement condition
 are known beforehand . . . which they generally aren't.
 
 
-##HOW
+## HOW
 
 The Pt100 resistance lookup table uses unsigned 16-bit integers because:
 
@@ -55,7 +55,7 @@ that implies, specifically, PROGMEM data type(s) and use of
 pgm_read_word_near() to fetch them.  
 
 
-##WTF
+## WTF
 
 Several computational conversion methods are included for comparison: 
 Callendar-Van Dusen (aka 'quadratic'), cubic, polynomial, and rational 
@@ -64,10 +64,10 @@ eventually to save space.
 
 If ported to a CPU with more SRAM and a floating point unit, (viz., ARM
 Cortex M4 or better) these defs will certainly help: 
-	'''
+```C
 	#define PROGMEM /**/
 	#define pgm_read_word_near((x)) ((uint16_t)(*(x)))
-	'''
+```
 	
 It has been tested and and found suitable for the Adafruit Pt100 RTD
 Breakout w/MAX31865 although any Arduino hardware+software mix that
