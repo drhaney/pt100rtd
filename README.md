@@ -24,7 +24,7 @@ accuracy for the 0-100C range, the firmware should match them at least minimally
 Consuming ~3kB of Arduino program memory, this Pt100rtd library is larger
 than any collection of computational methods that might be used instead. 
 For any ordinary temperature between -60C and 650C, the venerable Callendar
--Van Dusen equation works adequately. Gas liquefaction enthusiasts, however,
+-Van Dusen equation works well. Gas liquefaction enthusiasts, however,
 have different requirements.
 
 #### The measurement hardware is inadequate or middling.
@@ -36,6 +36,9 @@ the RTD, precise conversion can't correct inaccurate data acquisition.
 A high excitation current causes RTD self-heating which militates against accurate
 measurement. Self-heating can be corrected for only if the measurement conditions
 are known beforehand . . . which they generally aren't.
+
+Generally speaking, self-heating error is mitigated by liquid immersion thermometry
+but reading an accurate air or gas temperature is more problematic.
 
 
 ## HOW
