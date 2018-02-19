@@ -95,6 +95,7 @@ void loop()
 	// fast integer math:
 	// fits in 32 bits as long as (100 * RREF) <= 2^16,
 	//  i.e., RREF must not exceed 655.35 ohms (heh).
+	// TO DO: revise for 4000 ohm reference resistor needed by Pt1000 RTDs
  
 	// Use uint16_t (ohms * 100) since it matches data type in lookup table.
 	dummy = ((uint32_t)(rtd << 1)) * 100 * ((uint32_t) floor(RREF)) ;
@@ -109,11 +110,11 @@ void loop()
  
   // compare lookup table and common computational methods
   
-	Tlut	= PT100.celsius(ohmsx100) ;			  // NoobNote: LUT== LookUp Table
-	Tcvd	= PT100.celsius_cvd(ohms) ; 		  // Callendar-Van Dusen calc
-	Tcube	= PT100.celsius_cubic(ohms) ;		  // Cubic eqn calc
-	Tpoly	= PT100.celsius_polynomial(ohms) ;      // 5th order polynomial
-	Trpoly= PT100.celsius_rationalpolynomial(ohms) ;	// ugly rational polynomial quotient
+	Tlut	= PT100.celsius(ohmsx100) ;			// NoobNote: LUT== LookUp Table
+	Tcvd	= PT100.celsius_cvd(ohms) ; 		  	// Callendar-Van Dusen calc
+	Tcube	= PT100.celsius_cubic(ohms) ;		  	// Cubic eqn calc
+	Tpoly	= PT100.celsius_polynomial(ohms) ;      	// 5th order polynomial
+	Trpoly	= PT100.celsius_rationalpolynomial(ohms) ;	// ugly rational polynomial quotient
 	
 	// report temperatures at 0.001C resolution to highlight methodological differences
 	Serial.print("Tlut   = ") ; Serial.print(Tlut  ,3) ; Serial.println(" C (exact)") ;
@@ -121,7 +122,7 @@ void loop()
 	Serial.print("Tcube  = ") ; Serial.print(Tcube ,3) ; Serial.println(" C") ;
 	Serial.print("Tpoly  = ") ; Serial.print(Tpoly ,3) ; Serial.println(" C") ;
 	Serial.print("Trpoly = ") ; Serial.print(Trpoly,3) ; Serial.println(" C") ;
-  Serial.println();
+  	Serial.println();
   
 	checkFault() ;
 
