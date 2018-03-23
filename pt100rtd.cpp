@@ -57,11 +57,10 @@ int pt100rtd::search_pt100_list(uint16_t ohmsX100)
 		
 	mid = (lower + upper) / 2 ;
 		
-	} while (lower < upper)	;
+    } while (lower < upper)	;
 	// falls through on last mismatch
 
-	return(mid);
-
+    return(mid);
 }
 
 /**********************************************************************
