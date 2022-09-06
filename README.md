@@ -19,7 +19,9 @@ accuracy for the 0-100C range, the firmware should match them at least minimally
 
 ## WHY NOT
 
-#### It's big.
+#### If you have a 32-bit ARM MCU, then you don't need this!
+It is intended for 8-bit MCUs lacking SRAM and speed, namely
+the one used in the Arduino UNO.
 
 Consuming ~3kB of Arduino program memory, this Pt100rtd library is larger
 than any collection of computational methods that might be used instead. 
