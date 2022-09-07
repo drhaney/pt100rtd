@@ -12,6 +12,9 @@ other purely computational methods may be validated against it.
 
 ## WHY
 
+Because executing a Callendar-Van Dusen temperature calculation in software floating point
+is computationally expensive on 8-bit Arduinos.
+
 Pt100 sensors can have uncalibrated accuracy which often exceeds that of the measurement
 hardware and firmware. Now that these sensors are affordably manufactured at "1/10 DIN"
 accuracy for the 0-100C range, the firmware should match them at least minimally. 
@@ -21,7 +24,7 @@ accuracy for the 0-100C range, the firmware should match them at least minimally
 
 #### If you have a 32-bit ARM MCU, then you don't need this!
 It is intended for 8-bit MCUs lacking SRAM and speed, namely
-the one used in the Arduino UNO.
+the one used in the Arduino UNO and similar.
 
 Consuming ~3kB of Arduino program memory, this Pt100rtd library is larger
 than any collection of computational methods that might be used instead. 
@@ -68,7 +71,7 @@ polynomial.  These functions are pedagogical and should be commented out
 eventually to save space.
 
 If ported to a CPU with more SRAM and a floating point unit, (viz., ARM
-Cortex M4 or better) these defs will certainly help: 
+M0 or better) these defs will certainly help: 
 ```C
 	#define PROGMEM /**/
 	#define pgm_read_word_near((x)) ((uint16_t)(*(x)))
